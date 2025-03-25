@@ -1,0 +1,86 @@
+<html>
+    <head>
+        <title>
+            YSMP Flight Plan File
+        </title>
+        <style>
+            .flightplan{
+                margin: 0 auto;
+                align-items: center;
+                text-align: center;
+                border-radius: 25px;
+                border: 2px solid #73AD21;
+                padding: 20px; 
+                width: 40%; 
+            }
+            .submitbutton{
+                width: 50%;
+
+            }
+        </style>
+    </head>
+    <body style="background-color: lightblue;">
+        <a href="/">
+            <button>
+                back
+            </button>
+        </a>
+        <h1 style="text-align: center;">
+            Get started filing a flight plan
+        </h1>
+        <div class="flightplan">
+            <form action="http://127.0.0.1:5000/submit" method="POST">
+                <label for="flightnum">Flight Number:</label>
+                <input type="text" id="flightnum" name="flightnum"><br><br>
+                <label for="aircrafttype">Aircraft Type:</label>
+                <select name="aircrafttype" id="aircrafttype">
+                    <option>select an aircraft</option>
+                    <option value="BCS1">A220-100</option>
+                    <option value="BCS3">A220-300</option>
+                    <option value="B737">B737-700</option>
+                    <option value="B738">B737-800</option>
+                    <option value="B37M">B737 Max 7</option>
+                    <option value="B38M">B737 Max 8</option>
+                    <option value="B39M">B737 Max 9</option>
+                    <option value="A319">A319</option>
+                    <option value="A320">A320</option>
+                    <option value="A321">A321</option>
+                    <option value="A19N">A319 Neo</option>
+                    <option value="A20N">A320 Neo</option>
+                    <option value="A21N">A321 Neo</option>
+                    <option value="HappyGhast">Happy Ghast!</option>
+                    <option value="Other">Other</option>
+                </select>
+                <br><br>
+                <label for="departure">Departure Airport:</label>
+                <select name="departure" id="departure">
+                    <option>select an airport</option>
+                    <option value="YSMP">YSMP Airport [End Portal 1]</option>
+                    <option>More to come in the future</option>
+                </select><br><br>
+                <label for="arrival">Arrival Airport:</label>
+                <select name="arrival" id="arrival">
+                    <option>select an airport</option>
+                    <option value="YSMP">YSMP Airport [End Portal 1]</optoin>
+                    <option>More to come in the future</option>
+                </select><br><br>
+                <label for="route">Flight Route</label>
+                <input type="text" id="route" name="route"><br><br>
+                <label for="flight_rules"><h3>IFR or VFR</h3></label>
+                <label>
+                    <input type="radio" name="flight_rules" value="VFR"> VFR
+                </label>
+                <br>
+                <label>
+                    <input type="radio" name="flight_rules" value="IFR"> IFR
+                </label>
+                <br>
+                <label>
+                    <input type="radio" name="flight_rules" value="VFF"> VFR + FF
+                </label>
+                <br><br>
+                <input type="submit" value="submit" class="submitbutton">
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: lightblue;
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 80%;
+            margin: auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid black;
+        }
+        .logout {
+            background: red;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        .update-all {
+            background: green;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+
+    <!-- Form to update all statuses at once -->
+    <form action="/update_all_statuses" method="POST">
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Flight Number</th>
+                <th>Aircraft Type</th>
+                <th>Departure</th>
+                <th>Arrival</th>
+                <th>Route</th>
+                <th>Flight Rules</th>
+                <th>Time Submitted</th>
+                <th>Status</th>
+            </tr>
+            {% for flight in flights %}
+            <tr>
+                <td>{{ flight.id }}</td>
+                <td>{{ flight.flightnum }}</td>
+                <td>{{ flight.aircrafttype }}</td>
+                <td>{{ flight.departure }}</td>
+                <td>{{ flight.arrival }}</td>
+                <td>{{ flight.route }}</td>
+                <td>{{ flight.flight_rules }}</td>
+                <td>{{ flight.time_submitted }}</td>
+                <td>
+                    <select name="status_{{ flight.id }}">
+                        <option value="Inactive" {% if flight.status == 'Inactive' %}selected{% endif %}>Inactive</option>
+                        <option value="Active" {% if flight.status == 'Active' %}selected{% endif %}>Active</option>
+                        <option value="Deleted" {% if flight.status == 'Deleted' %}selected{% endif %}>Deleted</option>
+                    </select>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <button type="submit" class="update-all">Update All</button>
+    </form>
+
+    <br>
+    <a class="logout" href="/logout">Logout</a>
+</body>
+</html>
